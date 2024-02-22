@@ -3,7 +3,6 @@ defineProps(["weather", "weather3d"]);
 </script>
 <template>
   <div class="weather" v-if="weather?.weather">
-    <h2>Погода сегодня</h2>
     <img
       :src="`https://openweathermap.org/img/wn/${weather?.weather[0]?.icon}@2x.png`"
       :alt="weather?.weather[0]?.description"
@@ -14,7 +13,6 @@ defineProps(["weather", "weather3d"]);
     <p>Скорость ветра: {{ weather?.wind?.speed }}</p>
   </div>
 
-  <h2>Погода в течении 3 дней</h2>
   <div class="weather__list" v-if="weather3d?.list">
     <div v-for="(item, index) in weather3d?.list" :key="index + 1">
       <img
@@ -35,24 +33,28 @@ defineProps(["weather", "weather3d"]);
   max-width: 200px;
   margin-top: 15px;
   padding: 10px;
+  background-color: #fefefe;
+  border-radius: 5px;
   cursor: pointer;
   transition: box-shadow 0.2s linear;
 }
-
 .weather:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
 }
+
 .weather__list {
   display: flex;
-  max-width: 600px;
+  max-width: 700px;
   overflow-y: hidden;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .weather__list div {
   padding: 10px;
   max-width: 200px;
+  background-color: #fefefe;
+  border-radius: 5px;
   cursor: pointer;
   transition: box-shadow 0.2s linear;
 }
@@ -65,6 +67,7 @@ defineProps(["weather", "weather3d"]);
   .weather {
     margin: 15px auto;
   }
+
   .weather__list {
     max-width: 320px;
   }

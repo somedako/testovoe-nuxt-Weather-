@@ -22,18 +22,16 @@ onMounted(() => {
 
 <template>
   <div class="wrapper">
-    <input
-      class="input"
-      v-model="city"
-      @keyup.enter="handleSubmitWeather"
-      type="text"
-    />
+    <Input v-model="city" @eventKey="handleSubmitWeather" />
     <div v-show="isLoading" class="loader">
       <img src="/loading.svg" alt="loading..." />
     </div>
     <div class="weather__container">
-      <Weather v-if="!isError" :weather="weather" :weather3d="weatherIn3d" />
+      <h2>Погода сегодня</h2>
+      <Weather v-if="!isError" :weather="weather" />
       <div class="error" v-else>{{ weather.message }}</div>
+      <h2>Погода в течении 3 дней</h2>
+      <Weather :weather3d="weatherIn3d" />
     </div>
   </div>
 </template>
@@ -54,10 +52,6 @@ onMounted(() => {
 
 .loader {
   margin-top: 10px;
-}
-
-.input {
-  padding: 10px 15px;
 }
 
 .error {
