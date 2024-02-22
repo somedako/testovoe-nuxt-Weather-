@@ -2,11 +2,9 @@
 defineProps({
   weather: {
     type: [Object, null],
-    required: true,
   },
   weather3d: {
     type: [Object, null],
-    required: true,
   },
 });
 </script>
